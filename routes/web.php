@@ -25,6 +25,6 @@ $router->options('/{any:.*}', ['middleware' => 'cors', function() {
 $router->group(['prefix' => 'api/ncov', 'middleware' => 'cors'], function($router)
 {
     $router->get('all', ['uses' => 'ScrapController@getNVOCAll']);
-    $router->get('bycountry', ['uses' => 'ScrapController@getNCOVByCountry']);
+    $router->get('country/{country}', ['uses' => 'ScrapController@getNCOVByCountry']);
     $router->get('countrylist', ['uses' => 'ScrapController@getNCOVAllCountry']);
 });

@@ -39,14 +39,15 @@ class ScrapController extends Controller
         ]);        
     }    
 
-    public function getNCOVByCountry(Request $request) {
+    public function getNCOVByCountry($country) {
         $byCountry = [];
         $wmdata = $this->getNCOVData();
-        $country = ucfirst($request->country);
+        $cc = ucfirst($country);
+        echo $cc;
         if (in_array($country, $this->getNCOVCountries())) {
             $counter = 0;
             do {
-                if ($wmdata[$counter + 0] === $country) {                    
+                if ($wmdata[$counter + 0] === $cc) {                    
                     $byCountry[$wmdata[$counter + 0]] = array(
                         'totalcases'    => $wmdata[$counter + 1],
                         'newcases'    => $wmdata[$counter + 2],
