@@ -96,6 +96,9 @@ class ScrapController extends Controller
             $counter = 0;
             do {
                 if ($wmdata[$counter + 0] !== 'Total:') {
+                    if (in_array($wmdata[$counter + 0], $countryholder)) {
+                        return $countryholder;
+                    }
                     array_push($countryholder, $wmdata[$counter + 0]);
                 }                
                 $counter += 10;
