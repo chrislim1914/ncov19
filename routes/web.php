@@ -12,7 +12,10 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return response()->json([
+        'message'   => 'Welcome to NCOV-19 MOnitoring REST API',
+        'result'    => true
+    ]);     
 });
 
 $router->options('/{any:.*}', ['middleware' => 'cors', function() {
