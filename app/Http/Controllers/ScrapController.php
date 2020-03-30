@@ -24,7 +24,7 @@ class ScrapController extends Controller
                     'casesPerOneMillion'    => $wmdata[$counter + 8],
                     'deathPerOneMillion'    => $wmdata[$counter + 9],
                 );    
-                $counter += 10;
+                $counter += 11;
             } while(count($wmdata) > $counter);
 
             return response()->json([
@@ -74,6 +74,9 @@ class ScrapController extends Controller
         ]);
     }
 
+    /**
+     * method 
+     */
     public function getNCOVAllCountry() {
         $countries = $this->getNCOVCountries();
         if ($countries) {
@@ -89,6 +92,13 @@ class ScrapController extends Controller
         ]);
     }
 
+    /**
+     * method to get all affected countries
+     * in getNCOVData() method
+     * 
+     * @return ARRAY
+     * @return BOOL
+     */
     protected function getNCOVCountries() {
         $countryholder = [];
         $wmdata = $this->getNCOVData();
@@ -101,7 +111,7 @@ class ScrapController extends Controller
                     }
                     array_push($countryholder, $wmdata[$counter + 0]);
                 }                
-                $counter += 10;
+                $counter += 11;
             } while(count($wmdata) > $counter);
 
             return $countryholder;
@@ -110,6 +120,13 @@ class ScrapController extends Controller
         return false;  
     }
 
+    /**
+     * method to get data in https://www.worldometers.info/coronavirus/
+     * http request and scrap using Goutte\Client
+     * 
+     * @return ARRAY
+     * @return BOOL
+     */
     protected function getNCOVData() {
         $scrapping_url = 'https://www.worldometers.info/coronavirus/';
         $client = new Client();
