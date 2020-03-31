@@ -43,7 +43,8 @@ class ScrapController extends Controller
         $byCountry = [];
         $wmdata = $this->getNCOVData();
         $cc = ucfirst($country);
-        if (in_array($country, $this->getNCOVCountries())) {
+        var_dump($cc);
+        if (in_array($cc, $this->getNCOVCountries())) {
             $counter = 0;
             do {
                 if ($wmdata[$counter + 0] === $cc) {                    
@@ -59,7 +60,7 @@ class ScrapController extends Controller
                         'deathPerOneMillion'    => $wmdata[$counter + 9],
                     );  
                 }  
-                $counter += 10;
+                $counter += 11;
             } while(count($wmdata) > $counter);
 
             return response()->json([
