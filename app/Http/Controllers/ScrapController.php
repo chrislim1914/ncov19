@@ -43,7 +43,6 @@ class ScrapController extends Controller
         $byCountry = [];
         $wmdata = $this->getNCOVData();
         $cc = ucfirst($country);
-        var_dump($cc);
         if (in_array($cc, $this->getNCOVCountries())) {
             $counter = 0;
             do {
