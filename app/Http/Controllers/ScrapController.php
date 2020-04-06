@@ -24,7 +24,7 @@ class ScrapController extends Controller
                     'casesPerOneMillion'    => $wmdata[$counter + 8],
                     'deathPerOneMillion'    => $wmdata[$counter + 9],
                 );    
-                $counter += 10;
+                $counter += 12;
             } while(count($wmdata) > $counter);
 
             return response()->json([
@@ -59,7 +59,7 @@ class ScrapController extends Controller
                         'deathPerOneMillion'    => $wmdata[$counter + 9],
                     );  
                 }  
-                $counter += 10;
+                $counter += 12;
             } while(count($wmdata) > $counter);
 
             return response()->json([
@@ -111,7 +111,7 @@ class ScrapController extends Controller
                     }
                     array_push($countryholder, $wmdata[$counter + 0]);
                 }                
-                $counter += 10;
+                $counter += 12;
             } while(count($wmdata) > $counter);
 
             return $countryholder;
